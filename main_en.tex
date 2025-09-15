@@ -1,9 +1,10 @@
 % ==================== Header ====================
-\documentclass{article}
+\documentclass[12pt]{article} %montserrat fonst exists only in 10pt-12pt
 \usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage{enumitem}
 \usepackage{dirtytalk}
 \usepackage{fontawesome5}
 \usepackage{setspace}
@@ -13,17 +14,15 @@
 % ==================== Global settings ====================
 \setlength{\parindent}{0mm} % No paragraph indent
 \pagenumbering{gobble} % No page numbering
-\setstretch{1.0} % Set line spacing (influences only newlines, and I have newlines only in the header, all other text is in lists)
-\large % Set find size
 
 % ==================== Custom commands ====================
 \definecolor{custom_blue}{RGB}{2,132,199}
 
 \definecolor{linkedin_blue}{RGB}{10,102,194}
 
-\newcommand{\NameText}[1] {{\huge\textbf{#1}}}
+\newcommand{\NameText}[1] {{\Large\textbf{#1}}}
 
-\newcommand{\HighlightedText}[1] {{\large\textbf{#1}}}
+\newcommand{\HighlightedText}[1] {{\textbf{#1}}}
 
 \newcommand{\PlaceAndTime}[2] {\HighlightedText{#1} \hfill \HighlightedText{#2}}
 
@@ -31,39 +30,33 @@
 
 \newcommand{\SymbolAndText}[2] {#1 \hspace{0mm} #2}
 
-\newcommand{\LinkSeparator} {\hspace{1mm} \textbullet \hspace{2mm}}
-
 \newenvironment{ItemizeSection}[1]{
-    \vspace{2mm}
     \HighlightedText{#1}
     \vspace{1mm}
     {\color{custom_blue} \hrule}
-    \begin{itemize}
-    \renewcommand\labelitemi{$\bullet$}
+    \begin{itemize}[topsep=0pt, itemsep=0pt, label={$\bullet$}]
 }{
     \end{itemize}
 }
 
 \newenvironment{TextSection}[1]{
-    \vspace{2mm}
     \HighlightedText{#1}
     \vspace{1mm}
     {\color{custom_blue} \hrule}
-    \begin{itemize}
-    \renewcommand\labelitemi{}
+    \begin{itemize}[topsep=0pt, itemsep=0pt, label={}]
 }{
     \end{itemize}
 }
 
 \newenvironment{ItemizeSubsection}{
-    \begin{itemize}
-    \renewcommand\labelitemii{$\circ$}
+    \begin{itemize}[topsep=-999pt, itemsep=0pt, label={$\circ$}]
 }{
     \end{itemize}
 }
 
 % ==================== Name and Contact ====================
 
+\setstretch{1.1} % Spacing for thr header
 \begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=2mm, bottom=2mm]
 
     \noindent \begin{minipage}{0.6\textwidth}
@@ -84,24 +77,20 @@
         \includegraphics[width=30mm]{Photo_compressed_round.png}
     \end{minipage}
 \end{tcolorbox}
-\setstretch{0.0}
+\setstretch{1.0} % Spacing for the rest of the document
 
 % ==================== Education ====================
 \begin{ItemizeSection}{Education}
-    \item \PlaceAndTime{TU Darmstadt}{2023 -- 2025}
-
+    \item \PlaceAndTime{TU Darmstadt}{2023 -- 2025} \\
     Computational Engineering (CE), Master
 
-    \item \PlaceAndTime{RWTH Aachen University}{2018 -- 2023}
-
+    \item \PlaceAndTime{RWTH Aachen University}{2018 -- 2023} \\
     Computational Engineering Science (CES), Bachelor
 
-    \item \PlaceAndTime{Studienkolleg at Free University Berlin}{2017 -- 2018}
-
+    \item \PlaceAndTime{Studienkolleg at Free University Berlin}{2017 -- 2018} \\
     Technical course (T-course)
 
-    \item \PlaceAndTime{Technical Lyceum}{2010 -- 2017}
-
+    \item \PlaceAndTime{Technical Lyceum}{2010 -- 2017} \\
     Technical Lyceum of National Technical University of Ukraine \say{Kyiv Polytechnical Institute}
 \end{ItemizeSection}
 
@@ -110,25 +99,25 @@
     \item \PlaceAndTime{Master thesis at SIM of TU Darmstadt}{February 2025 -- September 2025}
     \begin{ItemizeSubsection}
         \item Title: Adding spatial awareness to embedding-based anomaly detection methods for automated industrial inspection
-        \item Developed an anomaly detection method with 95\% accuracy by combining classic algorithms with foundation models (Python, torch, transformers)
+        \item Developed an anomaly detection method with >95\% accuracy by combining classic algorithms with foundation models (Python, torch, transformers)
     \end{ItemizeSubsection}
 
     \item \PlaceAndTime{Assistant at BMLS of Goethe University Frankfurt}{June 2023 -- July 2024}
     \begin{ItemizeSubsection}
-        \item Developed slicing software with fratures unique to a bio-3D-printer (C++, C\#, Slic3r)
-        \item Ported printer controller software to new hardware (C++, Arduino)
+        \item Developed graphical slicing software with support of features unique to a bio-3D-printer (C\#, C++, Slic3r)
+        \item Ported printer control software to a new hardware (C++, Arduino)
     \end{ItemizeSubsection}
 
     \item \PlaceAndTime{Bachelor thesis at DSME of RWTH Aachen}{June -- September 2022}
     \begin{ItemizeSubsection}
         \item Title: Balancing a 2D inverted pendulum with a Franka Panda robotic arm
-        \item Developed inverse kinematics, inverse dynamics, and control algorithms that enabled the robot to balance a pendulum with two DOFs (ROS, C++, Python)
+        \item Developed inverse kinematics, inverse dynamics, and control algorithms that enabled the robot to balance a 2-DOF inverse pendulum (ROS, C++, Python)
     \end{ItemizeSubsection}
 
     \item \PlaceAndTime{Intern at Continental AG}{March 2022 -- May 2022}
     \begin{ItemizeSubsection}
-        \item Developed a tool for C code generation from CAN database (Python, C, CAPL)
-        \item Automated software building process for V850 microcontroller (CMake, Python)
+        \item Developed a tool for generation of C code from CAN database (Python, C, CAPL)
+        \item Automated software building process for a V850 microcontroller (CMake, Python)
     \end{ItemizeSubsection}
 
     \item \PlaceAndTime{Assistant at DSME of RWTH Aachen}{April -- December 2021}
@@ -146,7 +135,7 @@
 
     \item Experience with mobile and stationary robots
 
-    \item Knowledge of Autodesk Inventor, FreeCAD, KiCAD (incl. understanding of electronics)
+    \item Knowledge of KiCAD (incl. ability to solder and understanding of electronics), FreeCAD, Autodesk Inventor
 
     \item Advanced Linux handling (incl. kernel configuration)
 \end{ItemizeSection}
