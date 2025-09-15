@@ -1,0 +1,140 @@
+
+% ============================== Header ==============================
+\documentclass{article}
+\usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage{dirtytalk}
+\usepackage{fontawesome5}
+\usepackage{setspace}
+
+\begin{document}
+
+% ============================== Global settings ==============================
+\setlength{\parindent}{0mm} % No paragraph indent
+\pagenumbering{gobble} % No page numbering
+\setstretch{1.5} % Set line spacing
+\large % Set find size
+
+% ============================== Custom commands ==============================
+\definecolor{custom_blue}{RGB}{2,132,199}
+
+\definecolor{linkedin_blue}{RGB}{10,102,194}
+
+\newcommand{\NameText}[1] {{\huge\textbf{#1}}}
+
+\newcommand{\HighlightedText}[1] {{\large\textbf{#1}}}
+
+\newcommand{\Section}[1]{
+    \vspace{2mm}
+    \HighlightedText{#1}
+    \vspace{1mm}
+    {\color{custom_blue} \hrule}
+    \vspace{3mm}
+}
+\newcommand{\ItemizeSection}[1]{
+    \vspace{2mm}
+    \HighlightedText{#1}
+    \vspace{1mm}
+    {\color{custom_blue} \hrule}
+}
+
+% ============================== Name and Contact ==============================
+
+\begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=2mm, bottom=2mm]
+
+    \noindent \begin{minipage}{0.7\textwidth}
+        \NameText{Kyrylo Sovailo}
+
+        \faAt \hspace{0.0mm} \href{mailto:k.sovailo@gmail.com}{\underline{k.sovailo@gmail.com}}
+
+        \faPhone* \href{tel:+4917635479038}{\underline{01763 5479038}}
+
+        \faEnvelope \hspace{0.0mm} Pallaswiesenstr. 39, 64293 Darmstadt
+
+        \faGithub \hspace{0.0mm} \href{https://github.com/kyrylo-sovailo}{github.com} \hspace{5.0mm} \faLinkedin \hspace{0.0mm} \href{https://linkedin.com/in/kyrylo-sovailo-19b4541b9}{linkedin.com}
+    \end{minipage}
+    \begin{minipage}{0.29\textwidth}
+        \centering
+        \includegraphics[width=3.5cm]{Photo_compressed_round.png}
+    \end{minipage}
+\end{tcolorbox}
+\setstretch{0.0}
+
+% ============================== Education ==============================
+\ItemizeSection{Education}
+\begin{itemize}
+    \item[$\bullet$] \HighlightedText{TU Darmstadt} \hfill \HighlightedText{2023 -- 2025}
+
+    Computational Engineering (CE), Master
+
+    \item[$\bullet$] \HighlightedText{RWTH Aachen University} \hfill \HighlightedText{2018 -- 2023}
+
+    Computational Engineering Science (CES), Bachelor
+
+    \item[$\bullet$] \HighlightedText{Studienkolleg at Free University Berlin} \hfill \HighlightedText{2017 -- 2018}
+
+    Technical course (T-course)
+
+    \item[$\bullet$] \HighlightedText{Technical Lyceum} \hfill \HighlightedText{2010 -- 2017}
+
+    Technical Lyceum of National Technical University of Ukraine \say{Kyiv Polytechnical Institute}
+\end{itemize}
+
+% ============================== Professional background ==============================
+\ItemizeSection{Professional Background}
+\begin{itemize}
+    \item[$\bullet$] \HighlightedText{Master thesis at SIM of TU Darmstadt} \hfill \HighlightedText{February 2025 -- September 2025}
+    \begin{itemize}
+        \item[$\circ$] Title: Adding spatial awareness to embedding-based anomaly detection methods for automated industrial inspection
+        \item[$\circ$] Developing algorithms based on foundation models (torch, transformers, Python)
+    \end{itemize}
+
+    \item[$\bullet$] \HighlightedText{Assistant at BMLS of Goethe University Frankfurt} \hfill \HighlightedText{June 2023 -- July 2024}
+    \begin{itemize}
+        \item[$\circ$] Development of slicing software (C++, C\#, Slic3r)
+        \item[$\circ$] Programming of a controller of bio-3D-printer (C++, Arduino)
+    \end{itemize}
+
+    \item[$\bullet$] \HighlightedText{Bachelor thesis at DSME of RWTH Aachen} \hfill \HighlightedText{June -- September 2022}
+    \begin{itemize}
+        \item[$\circ$] Title: Balancing a 2D inverted pendulum with a Franka Panda robotic arm
+        \item[$\circ$] Development of inverse kinematics, inverse dynamics, and control algorithms (ROS, C++, Python)
+    \end{itemize}
+
+    \item[$\bullet$] \HighlightedText{Intern at Continental AG} \hfill \HighlightedText{March 2022 -- May 2022}
+    \begin{itemize}
+        \item[$\circ$] Development of a tool for code generation from CAN database (Python, C, CAPL)
+        \item[$\circ$] Implementation of a development toolchain for V850 microcontroller (CMake, Python)
+    \end{itemize}
+
+    \item[$\bullet$] \HighlightedText{Assistant at DSME of RWTH Aachen} \hfill \HighlightedText{April -- December 2021}
+    \begin{itemize}
+        \item[$\circ$] Development of control algorithms for a Franka Panda robotic arm (real-time Linux, C++, Python)
+        \item[$\circ$] Implementation of a simulator for the robot (C++, Gazebo)
+    \end{itemize}
+\end{itemize}
+
+% ============================== Skills ==============================
+\ItemizeSection{Skills}
+\begin{itemize}
+    \item[$\bullet$] Experience with C, C++, C\#, Python, Matlab/Simulink, git, CMake, ROS, \LaTeX
+
+    \item[$\bullet$] Experience with embedded systems: AVR, ARM (incl. Raspberry Pi and NVidia Jetson)
+
+    \item[$\bullet$] Experience with mobile and stationary robots
+
+    \item[$\bullet$] Knowledge of Autodesk Inventor, FreeCAD, KiCAD (incl. understanding of electronics)
+
+    \item[$\bullet$] Advanced Linux handling (incl. kernel configuration)
+\end{itemize}
+
+% ============================== Other ==============================
+\Section{Miscellaneous}
+
+\hspace{2.5mm} I have a Github Account with personal projects: \hspace{0mm} \faGithub \hspace{0.0mm} \href{https://github.com/kyrylo-sovailo}{github.com/kyrylo-sovailo}
+
+\hspace{2.5mm} In 2017, I won a bronze medal at the International Physics Olympiad.
+
+\end{document}
