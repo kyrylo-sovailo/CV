@@ -1,135 +1,163 @@
-% ============================== Header ==============================
-\documentclass{article}
+% ==================== Header ====================
+\documentclass[12pt]{article} %montserrat fonts exists only in 10pt-12pt
 \usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage{enumitem}
 \usepackage{dirtytalk}
 \usepackage{fontawesome5}
 \usepackage{setspace}
 
 \begin{document}
 
-% ============================== Global settings ==============================
+% ==================== Global settings ====================
 \setlength{\parindent}{0mm} % No paragraph indent
 \pagenumbering{gobble} % No page numbering
-\setstretch{1.5} % Set line spacing
-\large % Set find size
+\hyphenpenalty=10000 % No hyphens
+\tolerance=1000 % No hyphens
 
-% ============================== Custom commands ==============================
+% ==================== Custom commands ====================
 \definecolor{custom_blue}{RGB}{2,132,199}
+
 \definecolor{linkedin_blue}{RGB}{10,102,194}
-\newcommand{\NameText}[1] {{\huge \textbf{#1}}}
-\newcommand{\HighlightedText}[1] {{\large \textbf{#1}}}
-\newcommand{\Section}[1]{
-    \vspace{2mm}
-    \HighlightedText{#1}
+
+\newcommand{\NameText}[1] {{\Large\textbf{#1}}}
+
+\newcommand{\HighlightedText}[1] {{\textbf{#1}}}
+
+\newcommand{\PlaceAndTime}[2] {\HighlightedText{#1} \hfill \HighlightedText{#2}}
+
+\newcommand{\SymbolAndLink}[3] {#1 \hspace{0mm} \href{#3} {\underline{#2}}}
+
+\newcommand{\SymbolAndText}[2] {#1 \hspace{0mm} #2}
+
+\newenvironment{ItemizeSection}[1]{
     \vspace{1mm}
-    {\color{custom_blue} \hrule}
-    \vspace{3mm}
-}
-\newcommand{\ItemizeSection}[1]{
-    \vspace{2mm}
     \HighlightedText{#1}
-    \vspace{1mm}
+    \vspace{0.5mm}
     {\color{custom_blue} \hrule}
+    \begin{itemize}[left=0.5em, topsep=0pt, itemsep=0pt, label={$\bullet$}]
+}{
+    \end{itemize}
 }
 
-% ============================== Name and Contact ==============================
+\newenvironment{TextSection}[1]{
+    \vspace{1mm}
+    \HighlightedText{#1}
+    \vspace{0.5mm}
+    {\color{custom_blue} \hrule}
+    \begin{itemize}[left=0.5em, topsep=0pt, itemsep=0pt, label={}]
+}{
+    \end{itemize}
+}
 
-\begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=2mm, bottom=2mm]
+\newenvironment{ItemizeSubsection}{
+    \begin{itemize}[left=0.5em, topsep=-999pt, itemsep=0pt, label={$\circ$}]
+}{
+    \end{itemize}
+}
+
+% ==================== Name and Contact ====================
+
+\setstretch{1.5} % Spacing for the header
+\begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=1mm, bottom=1mm]
 
     \noindent \begin{minipage}{0.7\textwidth}
         \NameText{Kyrylo Sovailo}
 
-        \faAt \hspace{0.0mm} \href{mailto:k.sovailo@gmail.com}{\underline{k.sovailo@gmail.com}}
+        \begin{tabular}{@{}ll@{}}
+            \SymbolAndLink{\faAt}{k.sovailo@gmail.com}{mailto:k.sovailo@gmail.com} &
+            \SymbolAndLink{\faPhone*}{01763 5479038}{tel:+4917635479038} \\
+            \SymbolAndLink{\faGithub}{github.com}{https://github.com/kyrylo-sovailo} &
+            \SymbolAndLink{\faLinkedin}{linkedin.com}{https://linkedin.com/in/kyrylo-sovailo-19b4541b9} \\
+            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faEnvelope}{Pallaswiesenstr. 39, 64293 Darmstadt}}
+        \end{tabular}
 
-        \faPhone* \href{tel:+4917635479038}{\underline{01763 5479038}}
-
-        \faEnvelope \hspace{0.0mm} Pallaswiesenstr. 39, 64293 Darmstadt
-
-        \faGithub \hspace{0.0mm} \href{https://github.com/kyrylo-sovailo}{github.com} \hspace{5.0mm} \faLinkedin \hspace{0.0mm} \href{https://linkedin.com/in/kyrylo-sovailo-19b4541b9}{linkedin.com}
     \end{minipage}
     \begin{minipage}{0.29\textwidth}
-        \centering
-        \includegraphics[width=3.5cm]{Photo_compressed_round.png}
+        \raggedleft
+        \includegraphics[width=30mm]{Photo_compressed_round.png}
     \end{minipage}
 \end{tcolorbox}
-\setstretch{0.0}
+\setstretch{0.84} % Spacing for the rest of the document
 
-% ============================== Education ==============================
-\ItemizeSection{Ausbildung}
-\begin{itemize}
-    \item[$\bullet$] \HighlightedText{TU Darmstadt} \hfill \HighlightedText{2023 -- 2025}
+% ==================== Summary ====================
+\vspace{-2.5mm}
+\begin{TextSection}{Zusammenfassung}
+    %\item Ich habe kürzlich mein Studium im Bereich Computational Engineering abgeschlossen und suche nun eine Stelle in der Industrie -- sei es ein Praktikum oder eine Einstiegsposition. Technik und Hardware begeistern mich seit jeher; ich arbeite selbstständig, achte auf Details und bin stets bereit, neue Fähigkeiten zu erlernen. Besonders motiviert bin ich, hardware-nah zu arbeiten, meine Kenntnisse zur Lösung realer Probleme einzusetzen, missionskritische Systeme zu entwickeln und einen Beitrag zur europäischen Verteidigung zu leisten.
 
+    \item Ich habe kürzlich mein Studium im Bereich Computational Engineering abgeschlossen und suche nun eine Stelle in der Industrie -- sei es ein Praktikum oder eine Einstiegsposition. Technik und Hardware begeistern mich seit jeher; ich arbeite selbstständig, achte auf Details und bin stets bereit, neue Fähigkeiten zu erlernen. Besonders motiviert bin ich, hardware-nah zu arbeiten, meine Kenntnisse zur Lösung realer Probleme einzusetzen und missionskritische Systeme zu entwickeln.
+\end{TextSection}
+
+% ==================== Education ====================
+\begin{ItemizeSection}{Ausbildung}
+    \item \PlaceAndTime{TU Darmstadt}{2023 -- 2025} \\
     Computational Engineering (CE), Master
 
-    \item[$\bullet$] \HighlightedText{RWTH Aachen University} \hfill \HighlightedText{2018 -- 2023}
-
+    \item \PlaceAndTime{RWTH Aachen University}{2018 -- 2023} \\
     Computational Engineering Science (CES), Bachelor
 
-    \item[$\bullet$] \HighlightedText{Studienkolleg an Freier Universität Berlin} \hfill \HighlightedText{2017 -- 2018}
-
+    \item \PlaceAndTime{Studienkolleg an Freier Universität Berlin}{2017 -- 2018} \\
     Technischer Kurs (T-Kurs)
 
-    \item[$\bullet$] \HighlightedText{Technisches Lyzeum} \hfill \HighlightedText{2010 -- 2017}
+    \item \PlaceAndTime{Technisches Lyzeum}{2010 -- 2017} \\
+    Technisches Lyzeum der Nationalen Technischen Universität der Ukraine \say{Kiew \\ Polytechnisches Institut}
+\end{ItemizeSection}
 
-    Technisches Lyzeum von Nationaler Technischer Universität der Ukraine \say{Kiew Polytechnisches Institut}
-\end{itemize}
+% ==================== Professional background ====================
+\begin{ItemizeSection}{Professioneller Hintergrund}
+    \item \PlaceAndTime{Masterarbeit an SIM von TU Darmstadt}{Februar -- September 2025}
+    \begin{ItemizeSubsection}
+        \item Thema: Integration von räumlicher Wahrnehmung in Embeddings-basierte \\ Anomalieerkennungsmethoden für die automatisierte industrielle Inspektion
+        \item Anomalieerkennungsmethode mit Genauigkeit von >95\% durch Kombination klassischer Algorithmen mit Foundation Models entwickelt (Python, PyTorch, Transformers)
+    \end{ItemizeSubsection}
 
-% ============================== Professional background ==============================
-\ItemizeSection{Professioneller Hintergrund}
-\begin{itemize}
-    \item[$\bullet$] \HighlightedText{Masterarbeit an SIM von TU Darmstadt} \hfill \HighlightedText{Februar 2025 -- September 2025}
-    \begin{itemize}
-        \item[$\circ$] Thema: Integration von räumlicher Wahrnehmung in embeddings-basierte Anomalieerkennungsmethoden für die automatisierte industrielle Inspektion
-        \item[$\circ$] Entwicklung von Algorithmen auf Basis von ViT-Modellen (torch, transformers, Python)
-    \end{itemize}
+    \item \PlaceAndTime{Hilfskraft an BMLS von Goethe Universität Frankfurt}{Juni 2023 -- Juli 2024}
+    \begin{ItemizeSubsection}
+        \item Grafische Slicing-Software entwickelt und die für einen Bio-3D-Drucker spezifischen Funktionen implementiert (C\#, C++, Slic3r)
+        \item Software für die Druckersteuerung auf die neue Hardware portiert (C++, Arduino)
+    \end{ItemizeSubsection}
 
-    \item[$\bullet$] \HighlightedText{Hilfskraft an BMLS von Goethe Universität Frankfurt} \hfill \HighlightedText{Juni 2023 -- Juli 2024}
-    \begin{itemize}
-        \item[$\circ$] Entwickung eines Slicer-Programms (C++, C\#, Slic3r)
-        \item[$\circ$] Programmierung des Controllers von einem Bio-3D-Drucker (C++, Arduino)
-    \end{itemize}
+    \item \PlaceAndTime{Bachelorarbeit an DSME von RWTH Aachen}{Juni -- September 2022}
+    \begin{ItemizeSubsection}
+        \item Thema: Balancierung eines 2D inversen Pendels mit Franka Panda Roboterarm
+        \item Steuerungsalgorithmen mit inverser Kinematik und Dynamik entwickelt, die dem Roboter ermöglichten, ein inverses Pendel mit zwei Freiheitsgraden zu balancieren (ROS, C++, Python)
+    \end{ItemizeSubsection}
 
-    \item[$\bullet$] \HighlightedText{Bachelorarbeit an DSME von RWTH Aachen} \hfill \HighlightedText{Juni -- September 2022}
-    \begin{itemize}
-        \item[$\circ$] Thema: Balancierung eines 2D inverses Pendels mit Franka Panda Roboterarm
-        \item[$\circ$] Entwicklung von Algorithmen für inverse Kinematik, inverse Dynamik und Robotersteuerung (ROS, C++, Python)
-    \end{itemize}
+    \item \PlaceAndTime{Praktikum an Continental AG}{März -- Mai 2022}
+    \begin{ItemizeSubsection}
+        \item Tool zur Generierung von C-Quellcode aus der CAN-Datenbank entwickelt (Python, C, CAPL)
+        \item Build-Prozess der Software für einen V850-Mikrocontroller automatisiert (CMake, Python)
+    \end{ItemizeSubsection}
 
-    \item[$\bullet$] \HighlightedText{Praktikum an Continental AG} \hfill \HighlightedText{März 2022 -- Mai 2022}
-    \begin{itemize}
-        \item[$\circ$] Aufbau eines Tools zur Erstellung von C aus CAN-Datenbanken (Python, C, CAPL)
-        \item[$\circ$] Aufbau einer Toolchain für Programmierung von V850 Mikrokontroller (CMake, Python)
-    \end{itemize}
+    \item \PlaceAndTime{Hilfskraft an DSME von RWTH Aachen}{April -- Dezember 2021}
+    \begin{ItemizeSubsection}
+        \item High-Level-APIs für einen Franka-Panda-Roboterarm implementiert \\ und Steuerungsalgorithmen entwickelt (Echtzeit-Linux, C++, Python)
+        \item Eigenständige (nicht-ROS) Simulationssoftware für den Arm entwickelt (C++, Gazebo)
+    \end{ItemizeSubsection}
+\end{ItemizeSection}
 
-    \item[$\bullet$] \HighlightedText{Hilfskraft an DSME von RWTH Aachen} \hfill \HighlightedText{April -- Dezember 2021}
-    \begin{itemize}
-        \item[$\circ$] Entwicklung eines Steueralgorithmus für einen Franka Panda Roboterarm (Echtzeit Linux, C++, Python)
-        \item[$\circ$] Implementierung einer Simulation des Roboters (C++, Gazebo)
-    \end{itemize}
-\end{itemize}
+% ==================== Skills ====================
+\begin{ItemizeSection}{Skills \& Auszeichnungen}
+    \item Kenntnisse in C, C++, C\#, Python, Matlab/Simulink, git, CMake, ROS, \LaTeX
 
-% ============================== Skills ==============================
-\ItemizeSection{Qualifikationen}
-\begin{itemize}
-    \item[$\bullet$] Kenntnisse von C, C++, C\#, Python, Matlab/Simulink, git, CMake, ROS, \LaTeX
+    \item Erfahrung mit eingebetteten Systemen: AVR, ARM (inkl. Raspberry Pi, NVidia Jetson)
 
-    \item[$\bullet$] Erfahrung mit eingebetteten Systemen: AVR, ARM (inkl. Raspberry Pi, NVidia Jetson)
+    \item Erfahrung mit stationären sowie mobilen Robotern
 
-    \item[$\bullet$] Erfahrung mit stationären sowie mobilen Robotern
+    \item Kenntnisse in KiCAD (inkl. Fähigkeit zu löten und Kenntnisse von Elektronik), FreeCAD, Autodesk Inventor
 
-    \item[$\bullet$] Kenntnisse von Autodesk Inventor, FreeCAD, KiCAD (inkl. Kenntnisse von Elektronik)
+    \item Fortgeschrittener Umgang mit Linux (inkl. Kernelkonfigurierung)
 
-    \item[$\bullet$] Fortgeschrittener Umgang mit Linux (inkl. Kernelkonfigurierung)
-\end{itemize}
+    \item Sprachen: Deutsch (C1), Englisch (C1), Ukrainisch (Muttersprache), Russisch (Muttersprache)
 
-% ============================== Other ==============================
-\Section{Sonstiges}
+    \item Auszeichnung: Bronzemedaille bei der Internationalen Physikolympiade, 2017
+\end{ItemizeSection}
 
-\hspace{2.5mm} Ich habe einen Github Account mit persönlichen Projekten: \hspace{0.0mm} \faGithub \hspace{0.0mm} \href{https://github.com/kyrylo-sovailo}{github.com/kyrylo-sovailo}
+% ==================== Other ====================
+%\begin{TextSection}{Sonstiges}
 
-\hspace{2.5mm} Im 2017 gewann ich eine Bronzemedaille bei der Internationalen Physikolympiade.
+%\end{TextSection}
 
 \end{document}
