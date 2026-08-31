@@ -1,21 +1,24 @@
 % ==================== Header ====================
 \documentclass[12pt]{article} %montserrat fonts exists only in 10pt-12pt
-\usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
+\usepackage[a4paper, top=10mm, bottom=10mm, left=12mm, right=12mm]{geometry}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage[defaultfam,tabular,lining]{montserrat}
 \usepackage{enumitem}
 \usepackage{dirtytalk}
 \usepackage{fontawesome5}
+\usepackage{numprint}
 \usepackage{setspace}
 
-\begin{document}
-
 % ==================== Global settings ====================
+\npdecimalsign{.} % Comma for decimals (American style)
+\npthousandsep{,} % Dot for thousands (American style)
 \setlength{\parindent}{0mm} % No paragraph indent
 \pagenumbering{gobble} % No page numbering
-\hyphenpenalty=10000 % No hyphens
-\tolerance=1000 % No hyphens
+\hyphenpenalty=100000 % No implicit hyphens
+\exhyphenpenalty=100000 % No explicit hyphens
+\tolerance=5000 % Avoid bad spacing
+\emergencystretch=1em % Allow minor overshoots (trust me, looks better)
 
 % ==================== Custom commands ====================
 \definecolor{custom_blue}{RGB}{2,132,199}
@@ -60,10 +63,11 @@
 
 % ==================== Name and Contact ====================
 
+\begin{document}
 \setstretch{1.5} % Spacing for the header
 \begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=1mm, bottom=1mm]
 
-    \noindent \begin{minipage}{0.7\textwidth}
+    \noindent \begin{minipage}{0.6\textwidth}
         \NameText{Kyrylo Sovailo}
 
         \begin{tabular}{@{}ll@{}}
@@ -71,93 +75,110 @@
             \SymbolAndLink{\faPhone*}{01763 5479038}{tel:+4917635479038} \\
             \SymbolAndLink{\faGithub}{github.com}{https://github.com/kyrylo-sovailo} &
             \SymbolAndLink{\faLinkedin}{linkedin.com}{https://linkedin.com/in/kyrylo-sovailo-19b4541b9} \\
-            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faEnvelope}{Pallaswiesenstr. 39, 64293 Darmstadt}}
+            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faEnvelope}{Pallaswiesenstr. 39, 64293 Darmstadt}} \\
+            %\multicolumn{2}{@{}l@{}}{\SymbolAndText{\faAddressCard}{Nationality: Ukraine}} \\
+            %\multicolumn{2}{@{}l@{}}{\SymbolAndText{\faBabyCarriage}{Born at 08.10.2000 in Kyiv, Ukraine}}
+            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faBabyCarriage}{Born at 08.10.2000}}
         \end{tabular}
 
     \end{minipage}
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.39\textwidth}
         \raggedleft
-        \includegraphics[width=30mm]{Photo_compressed_round.png}
+        \includegraphics[width=50mm]{Photo_compressed_round.png}
     \end{minipage}
 \end{tcolorbox}
-\setstretch{0.96} % Spacing for the rest of the document
-
-% ==================== Summary ====================
-\vspace{-2.5mm}
-\begin{TextSection}{Summary}
-    %\item I am a recent Computational Engineering graduate, now looking for my place in the industry -- either an internship or an entry-level position. Always passionate about technology and hardware, detail-oriented, able to work independently, and willing to learn. I'm eager to work close to the hardware, apply my skills to real-world problems, develop mission-critical systems, and contribute to European defense.
-
-    \item I am a recent Computational Engineering graduate, now looking for my place in the industry -- either an internship or an entry-level position. Always passionate about technology and hardware, detail-oriented, able to work independently, and willing to learn. I'm eager to work close to the hardware, apply my skills to real-world problems, and develop mission-critical systems.
-\end{TextSection}
+\setstretch{1.1} % Spacing for the rest of the document
 
 % ==================== Education ====================
+\vspace{-2.5mm}
 \begin{ItemizeSection}{Education}
-    \item \PlaceAndTime{TU Darmstadt}{2023 -- 2025} \\
-    Computational Engineering (CE), Master
+    \item \PlaceAndTime{Computational Engineering (CE) M.Sc.}{04.2023 -- 12.2025} \\
+    \textbf{(Specialization Computational Robotics)} \\
+    TU Darmstadt (final grade \numprint{2.1}) \\
+    Thesis (grade \numprint{1.7}):
+    \begin{ItemizeSubsection}
+        \item Topic: Adding spatial awareness to embedding-based anomaly detection methods for automated industrial inspection
+        %\item Institute: Institute for Simulation, System optimisation and Robotics (SIM)
+        \item Key outcomes: developed an anomaly detection method with 95\% accuracy by combining classical algorithms with foundation models (Python, PyTorch, Transformers)
+    \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{RWTH Aachen University}{2018 -- 2023} \\
-    Computational Engineering Science (CES), Bachelor
+    \item \PlaceAndTime{Computational Engineering Science (CES) B.Sc.}{10.2018 -- 04.2023} \\
+    RWTH Aachen University (final grade \numprint{2.4}) \\
+    Thesis (grade \numprint{1.7}):
+    \begin{ItemizeSubsection}
+        \item Topic: Balancing a 2D inverted pendulum with a Franka Panda robotic arm
+        %\item Institute: Institute for Data Science in Mechanical Engineering (DSME)
+        \item Key outcomes: developed inverse kinematics, inverse dynamics, and control algorithms that enabled the robot to balance a 2-DOF inverse pendulum (ROS, C++, Python)
+    \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Studienkolleg at Free University Berlin}{2017 -- 2018} \\
-    Technical course (T-course)
+    \item \PlaceAndTime{High school}{09.2017 -- 09.2018} \\
+     Studienkolleg at Free University Berlin, technical course
 
-    \item \PlaceAndTime{Technical Lyceum}{2010 -- 2017} \\
-    Technical Lyceum of National Technical University of Ukraine \say{Kyiv Polytechnical Institute}
+    %\item \PlaceAndTime{Abitur}{09.2010 -- 05.2017} \\
+    %Technical Lyceum of National Technical University of Ukraine \say{Kyiv Polytechnical Institute}
 \end{ItemizeSection}
 
 % ==================== Professional background ====================
-\begin{ItemizeSection}{Professional Background}
-    \item \PlaceAndTime{Master thesis at SIM of TU Darmstadt}{February -- September 2025}
-    \begin{ItemizeSubsection}
-        \item Title: Adding spatial awareness to embedding-based anomaly detection methods for automated industrial inspection
-        \item Developed an anomaly detection method with >95\% accuracy by combining classical algorithms with foundation models (Python, PyTorch, Transformers)
-    \end{ItemizeSubsection}
-
-    \item \PlaceAndTime{Assistant at BMLS of Goethe University Frankfurt}{June 2023 -- July 2024}
+\begin{ItemizeSection}{Professional experience}
+    \item \PlaceAndTime{Student assistant at Goethe University Frankfurt}{06.2023 -- 07.2024} \\
+    Buchmann Institute for Molecular Life Sciences (BMLS)
     \begin{ItemizeSubsection}
         \item Developed graphical slicing software with support of features unique to a bio-3D-printer (C\#, C++, Slic3r)
         \item Ported printer control software to a new hardware (C++, Arduino)
     \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Bachelor thesis at DSME of RWTH Aachen}{June -- September 2022}
-    \begin{ItemizeSubsection}
-        \item Title: Balancing a 2D inverted pendulum with a Franka Panda robotic arm
-        \item Developed inverse kinematics, inverse dynamics, and control algorithms that enabled the robot to balance a 2-DOF inverse pendulum (ROS, C++, Python)
-    \end{ItemizeSubsection}
-
-    \item \PlaceAndTime{Intern at Continental AG}{March -- May 2022}
+    \item \PlaceAndTime{Intern at Continental AG}{03.2022 -- 05.2022}
     \begin{ItemizeSubsection}
         \item Developed a tool for generation of C code from CAN database (Python, C, CAPL)
         \item Automated software building process for a V850 microcontroller (CMake, Python)
     \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Assistant at DSME of RWTH Aachen}{April -- December 2021}
+    \item \PlaceAndTime{Student assistant at RWTH Aachen University}{04.2021 -- 12.2021} \\
+    Institute for Data Science in Mechanical Engineering (DSME)
     \begin{ItemizeSubsection}
         \item Implemented high-level APIs and developed control algorithms for a Franka Panda robotic arm (real-time Linux, C++, Python)
         \item Implemented a standalone (non-ROS) software simulator for the robot (C++, Gazebo)
     \end{ItemizeSubsection}
 \end{ItemizeSection}
 
+\newpage
 % ==================== Skills ====================
-\begin{ItemizeSection}{Skills \& Achievements}
-    \item Experience with C, C++, C\#, Python/PyTorch, Matlab/Simulink, git, CMake, ROS, UML, \LaTeX
-
-    \item Experience with embedded systems: AVR, ARM (incl. Raspberry Pi and NVidia Jetson)
-
-    \item Experience with mobile and stationary robots
-
-    \item Knowledge of KiCAD (incl. ability to solder and understanding of electronics), FreeCAD, Autodesk Inventor
-
-    \item Advanced Linux handling (incl. kernel configuration)
-
-    \item Languages: English (C1), German (C1), Ukrainian (native), Russian (native)
-
-    \item Award: bronze medal at the International Physics Olympiad, 2017
+\begin{ItemizeSection}{IT skills}
+    \item Software development:
+    \begin{ItemizeSubsection}
+        \item Expert: C, C++, Python, CMake
+        \item Advanced: Matlab/Simulink, PyTorch, git, Linux, docker, \LaTeX
+    \end{ItemizeSubsection}
+    \item Hardware development:
+    \begin{ItemizeSubsection}
+        \item Expert: KiCAD, FreeCAD
+        \item Basics: Autodesk Inventor
+    \end{ItemizeSubsection}
+    \item Embedded-development:
+    \begin{ItemizeSubsection}
+        \item Expert: C/C++ (Platforms: Atmel AVR, ARM, Raspberry Pi, Nvidia Jetson, x86\_64 real-time Linux), Python (Platforms: Nvidia Jetson, x86\_64 real-time Linux)
+        \item Advanced: ROS, stationary robots (Franka Panda), mobile robots (Turtlebot, Jetbot)
+        \item Basics: FPGA-Programming
+    \end{ItemizeSubsection}
 \end{ItemizeSection}
 
-% ==================== Miscellaneous ====================
-%\begin{TextSection}{Miscellaneous}
 
-%\end{TextSection}
+%\begin{ItemizeSection}{Akademic knowledge}
+%    \item Expert: Data Structures and Algorithms
+%    \item Advanced: Machine Learning (ML), Computer Vision (CV), \\ High-Performance Computing (HPC), Simulation technology (FEM, CFD), \\ Control theory, Robotics and navigation
+%\end{ItemizeSection}
+
+\begin{ItemizeSection}{Technical skills}
+    \item Advanced: Soldering, PCB-Debugging
+\end{ItemizeSection}
+
+\begin{ItemizeSection}{Languages}
+    \item Native: Ukrainian, Russian
+    \item Fluent (C1): English, German
+\end{ItemizeSection}
+
+\begin{ItemizeSection}{Awards}
+    \item Bronze medal at the International Physics Olympiad (IPhO), 2017
+\end{ItemizeSection}
 
 \end{document}

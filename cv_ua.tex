@@ -1,21 +1,27 @@
 % ==================== Header ====================
 \documentclass[12pt]{article} %montserrat fonts exists only in 10pt-12pt
-\usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
+\usepackage[a4paper, top=10mm, bottom=10mm, left=12mm, right=12mm]{geometry}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
-\usepackage{erewhon}
-\usepackage[T2A]{fontenc} %For Cyrrylic
-\usepackage[utf8]{inputenc} %For Cyrrylic
+%\usepackage[defaultfam,tabular,lining]{montserrat}
 \usepackage{enumitem}
 \usepackage{dirtytalk}
 \usepackage{fontawesome5}
+\usepackage{numprint}
 \usepackage{setspace}
 
-\begin{document}
+\usepackage[T2A]{fontenc} %For Cyrrylic
+\usepackage[utf8]{inputenc} %For Cyrrylic
 
 % ==================== Global settings ====================
+\npdecimalsign{,} % Comma for decimals (European style)
+\npthousandsep{.} % Dot for thousands (European style)
 \setlength{\parindent}{0mm} % No paragraph indent
 \pagenumbering{gobble} % No page numbering
+\hyphenpenalty=100000 % No implicit hyphens
+\exhyphenpenalty=100000 % No explicit hyphens
+\tolerance=5000 % Avoid bad spacing
+\emergencystretch=1em % Allow minor overshoots (trust me, looks better)
 
 % ==================== Custom commands ====================
 \definecolor{custom_blue}{RGB}{2,132,199}
@@ -33,120 +39,149 @@
 \newcommand{\SymbolAndText}[2] {#1 \hspace{0mm} #2}
 
 \newenvironment{ItemizeSection}[1]{
-    \HighlightedText{#1}
     \vspace{1mm}
+    \HighlightedText{#1}
+    \vspace{0.5mm}
     {\color{custom_blue} \hrule}
-    \begin{itemize}[topsep=0pt, itemsep=0pt, label={$\bullet$}]
+    \begin{itemize}[left=0.5em, topsep=0pt, itemsep=0pt, label={$\bullet$}]
 }{
     \end{itemize}
 }
 
 \newenvironment{TextSection}[1]{
-    \HighlightedText{#1}
     \vspace{1mm}
+    \HighlightedText{#1}
+    \vspace{0.5mm}
     {\color{custom_blue} \hrule}
-    \begin{itemize}[topsep=0pt, itemsep=0pt, label={}]
+    \begin{itemize}[left=0.5em, topsep=0pt, itemsep=0pt, label={}]
 }{
     \end{itemize}
 }
 
 \newenvironment{ItemizeSubsection}{
-    \begin{itemize}[topsep=-999pt, itemsep=0pt, label={$\circ$}]
+    \begin{itemize}[left=0.5em, topsep=-999pt, itemsep=0pt, label={$\circ$}]
 }{
     \end{itemize}
 }
 
 % ==================== Name and Contact ====================
 
-\setstretch{1.1} % Spacing for thr header
+\begin{document}
+\setstretch{1.5} % Spacing for the header
 \begin{tcolorbox}[sharp corners=all, colback=custom_blue, coltext=white, frame empty, left=2mm, right=2mm, top=1mm, bottom=1mm]
 
-    \noindent \begin{minipage}{0.7\textwidth}
-        \NameText{Кирило Совайло}
+    \noindent \begin{minipage}{0.6\textwidth}
+        \NameText{Kyrylo Sovailo}
 
-        \SymbolAndLink{\faAt}{k.sovailo@gmail.com}{mailto:k.sovailo@gmail.com}
+        \begin{tabular}{@{}ll@{}}
+            \SymbolAndLink{\faAt}{k.sovailo@gmail.com}{mailto:k.sovailo@gmail.com} &
+            \SymbolAndLink{\faPhone*}{01763 5479038}{tel:+4917635479038} \\
+            \SymbolAndLink{\faGithub}{github.com}{https://github.com/kyrylo-sovailo} &
+            \SymbolAndLink{\faLinkedin}{linkedin.com}{https://linkedin.com/in/kyrylo-sovailo-19b4541b9} \\
+            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faEnvelope}{Палласвізенштрассе 39, Дармштадт}} \\
+            %\multicolumn{2}{@{}l@{}}{\SymbolAndText{\faAddressCard}{Nationality: Ukraine}} \\
+            %\multicolumn{2}{@{}l@{}}{\SymbolAndText{\faBabyCarriage}{Born at 08.10.2000 in Kyiv, Ukraine}}
+            \multicolumn{2}{@{}l@{}}{\SymbolAndText{\faBabyCarriage}{Дата народження: 08.10.2000}}
+        \end{tabular}
 
-        \SymbolAndLink{\faPhone*}{01763 5479038}{tel:+4917635479038}
-
-        \SymbolAndLink{\faGithub}{github.com}{https://github.com/kyrylo-sovailo}
-
-        \SymbolAndLink{\faLinkedin}{linkedin.com}{https://linkedin.com/in/kyrylo-sovailo-19b4541b9}
-
-        \SymbolAndText{\faEnvelope}{Pallaswiesenstr. 39, 64293 Darmstadt}
     \end{minipage}
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.39\textwidth}
         \raggedleft
-        \includegraphics[width=35mm]{Photo_compressed_round.png}
+        \includegraphics[width=50mm]{Photo_compressed_round.png}
     \end{minipage}
 \end{tcolorbox}
-\setstretch{1.0} % Spacing for the rest of the document
+\setstretch{0.95} % Spacing for the rest of the document
 
 % ==================== Education ====================
 \begin{ItemizeSection}{Освіта}
-    \item \PlaceAndTime{Дармштадтський технічний університет}{2023 -- 2025} \\
-    Computational Engineering, магістр
+    \item \PlaceAndTime{Обчислювальна інженерія (Computational Engineering)}{04.2023 -- 12.2025} \\
+    \textbf{Магістр (спеціалізація: обчислювальна робототехніка)} \\
+    Дармштадтський технічний університет \\
+    Магістерська робота:
+    \begin{ItemizeSubsection}
+        \item Тема: Інтеграція просторової свідомості до методів виявлення аномалій на основі вбудовування для автоматизованої інспекції
+        %\item Інститут: Інститут моделювання, оптимізації систем та робототехніки (SIM)
+        \item Ключові результати: розроблено метод виявлення аномалій з точністю 95\% шляхом поєднання класичних алгоритмів з ШІ-моделями (Python, PyTorch, Transformers)
+    \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Рейнсько-Вестфальський технічний університет Аахена}{2018 -- 2023} \\
-    Computational Engineering Science, бакалавр
+    \item \PlaceAndTime{Обчислювальна інженерія (Computational Engineering Science)}{10.2018 -- 04.2023}
+    \textbf{Бакалавр} \\
+    Рейнсько-Вестфальський технічний університет Аахена \\
+    Бакалаврська робота:
+    \begin{ItemizeSubsection}
+        \item Тема: Балансування двовимірного перевернутого маятника за допомогою роботизованого маніпулятора Franka Panda
+        %\item Інститут: Інститут науки про дані в машинобудуванні (DSME)
+        \item Ключові результати: розроблено алгоритми зворотної кінематики, зворотної динаміки та управління, які дозволили роботу збалансувати двовимірний перевернутий маятник (ROS, C++, Python)
+    \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Штудіенколлег при вільному університеті Берліна}{2017 -- 2018} \\
+    \item \PlaceAndTime{Штудіенколлег при Вільному університеті Берліна}{09.2017 -- 09.2018} \\
     Технічний курс (Т-курс)
 
-    \item \PlaceAndTime{Технічний ліцей}{2010 -- 2017} \\
-    Технічний Ліцей Національного Технічного Університету України \say{Київський Політехнічний Інститут}
+    \item \PlaceAndTime{Технічний ліцей}{09.2010 -- 05.2017} \\
+    Технічний Ліцей Національного Технічного Університету України \\ \say{Київський Політехнічний Інститут}
 \end{ItemizeSection}
 
 % ==================== Professional background ====================
-\begin{ItemizeSection}{Досвід}
-    \item \PlaceAndTime{Магістерська робота в SIM при дармштадтському технічному університеті}{лютий -- вересень 2025}
+\begin{ItemizeSection}{Досвід роботи}
+    \item \PlaceAndTime{Асистент у Франкфуртському університеті імені Гете
+    06.2023 -- 07.2024} \\
+    Інститут молекулярних наук (BMLS)
     \begin{ItemizeSubsection}
-        \item Title: Adding spatial awareness to embedding-based anomaly detection methods for automated industrial inspection
-        \item Developed an anomaly detection method with >95\% accuracy by combining classic algorithms with foundation models (Python, torch, transformers)
+        \item Розробив слайсер з графічною оболонкою і з підтримкою унікальних функцій біо-3D-принтера (C\#, C++, Slic3r)
+        \item Портував програмне забезпечення для керування принтером на нове обладнання (C++, Arduino)
     \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Assistant at BMLS of Goethe University Frankfurt}{June 2023 -- July 2024}
+    \item \PlaceAndTime{Стажист у Continental AG}{03.2022 -- 05.2022}
     \begin{ItemizeSubsection}
-        \item Developed graphical slicing software with support of features unique to a bio-3D-printer (C\#, C++, Slic3r)
-        \item Ported printer control software to a new hardware (C++, Arduino)
+        \item Розробив інструмент для генерації коду C на основі бази даних CAN (Python, C, CAPL)
+        \item Автоматизував процес побудови програмного забезпечення для мікроконтролера V850 (CMake, Python)
     \end{ItemizeSubsection}
 
-    \item \PlaceAndTime{Bachelor thesis at DSME of RWTH Aachen}{June -- September 2022}
+    \item \PlaceAndTime{Асистент у Рейнсько-Вестфальському технічному університеті Аахена}{04.2021 -- 12.2021} \\
+    Інститут науки про дані в машинобудуванні (DSME)
     \begin{ItemizeSubsection}
-        \item Title: Balancing a 2D inverted pendulum with a Franka Panda robotic arm
-        \item Developed inverse kinematics, inverse dynamics, and control algorithms that enabled the robot to balance a 2-DOF inverse pendulum (ROS, C++, Python)
-    \end{ItemizeSubsection}
-
-    \item \PlaceAndTime{Intern at Continental AG}{March 2022 -- May 2022}
-    \begin{ItemizeSubsection}
-        \item Developed a tool for generation of C code from CAN database (Python, C, CAPL)
-        \item Automated software building process for a V850 microcontroller (CMake, Python)
-    \end{ItemizeSubsection}
-
-    \item \PlaceAndTime{Assistant at DSME of RWTH Aachen}{April -- December 2021}
-    \begin{ItemizeSubsection}
-        \item Implemented high-level APIs and developed control algorithms for a Franka Panda robotic arm (real-time Linux, C++, Python)
-        \item Implemented a standalone (non-ROS) software simulator for the robot (C++, Gazebo)
+        \item Реалізував високорівневі API та розробив алгоритми керування для роботизованої руки Franka Panda (Linux реального часу, C++, Python)
+        \item Реалізував окремий програмний симулятор поза ROS для роботизованої руки (C++, Gazebo)
     \end{ItemizeSubsection}
 \end{ItemizeSection}
 
+\newpage
 % ==================== Skills ====================
-\begin{ItemizeSection}{Skills}
-    \item Experience with C, C++, C\#, Python, Matlab/Simulink, git, CMake, ROS, \LaTeX
-
-    \item Experience with embedded systems: AVR, ARM (incl. Raspberry Pi and NVidia Jetson)
-
-    \item Experience with mobile and stationary robots
-
-    \item Knowledge of KiCAD (incl. ability to solder and understanding of electronics), FreeCAD, Autodesk Inventor
-
-    \item Advanced Linux handling (incl. kernel configuration)
+\begin{ItemizeSection}{Навички в IT}
+    \item Розробка програмного забезпечення:
+    \begin{ItemizeSubsection}
+        \item Експерт: C, C++, Python, CMake
+        \item Просунутий: Matlab/Simulink, PyTorch, git, Linux, docker, \LaTeX
+    \end{ItemizeSubsection}
+    \item Розробка апаратного забезпечення:
+    \begin{ItemizeSubsection}
+        \item Експерт: KiCAD, FreeCAD
+        \item Початківець: Autodesk Inventor
+    \end{ItemizeSubsection}
+    \item Розробка вбудованих систем (embedded):
+    \begin{ItemizeSubsection}
+        \item Експерт: C/C++ (Платформи: Atmel AVR, ARM, Raspberry Pi, Nvidia Jetson, x86\_64 Linux з реальним часом), Python (Платформи: Nvidia Jetson, x86\_64 Linux з реальним часом)
+        \item Просунутий: ROS, стаціонарні роботи (Franka Panda), мобільні роботи (Turtlebot, Jetbot)
+        \item Початківець: програмування FPGA
+    \end{ItemizeSubsection}
 \end{ItemizeSection}
 
-% ==================== Other ====================
-\begin{TextSection}{Miscellaneous}
-    \item I have a Github Account with personal projects:  \hspace{0mm} \SymbolAndLink{\faGithub}{github.com/kyrylo-sovailo}{https://github.com/kyrylo-sovailo}.
 
-    \item In 2017, I won a bronze medal at the International Physics Olympiad.
-\end{TextSection}
+%\begin{ItemizeSection}{Akademic knowledge}
+%    \item Expert: Data Structures and Algorithms
+%    \item Advanced: Machine Learning (ML), Computer Vision (CV), \\ High-Performance Computing (HPC), Simulation technology (FEM, CFD), \\ Control theory, Robotics and navigation
+%\end{ItemizeSection}
+
+\begin{ItemizeSection}{Технічні навички}
+    \item Просунутий: пайка, дебаг вбудованих плат
+\end{ItemizeSection}
+
+\begin{ItemizeSection}{Знання мов}
+    \item Вільно (C1): англійська, німецька
+\end{ItemizeSection}
+
+\begin{ItemizeSection}{Нагороди}
+    \item Бронзова медаль на Міжнародній олімпіаді з фізики (IPhO), 2017
+\end{ItemizeSection}
 
 \end{document}
